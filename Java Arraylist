@@ -1,0 +1,45 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scan = new Scanner(System.in);
+        
+        // Number of lines
+        int N = Integer.parseInt(scan.nextLine());
+        
+        //Create ArrayList
+        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+        
+        //for loop to fetch the line details 
+        for(int i = 0;  i <N ; i++){
+            int num = scan.nextInt();
+            ArrayList<Integer> line = new ArrayList<>();
+            for(int j=0; j<num; j++){
+                line.add(scan.nextInt());
+            }
+            list.add(line);
+        }
+        
+        //Read number of queries
+        int Q = scan.nextInt();
+        
+        // Read the queries line by line 
+        for(int i =0; i<Q; i++){
+            
+            int a = scan.nextInt();
+            int b = scan.nextInt();
+            try{
+                System.out.println(list.get(a-1).get(b-1));
+            }catch(Exception e){
+                System.out.println("ERROR!");
+            }
+            
+        }
+    }
+}
