@@ -1,0 +1,68 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc = new Scanner(System.in);
+
+        // Read the number of elements in the list
+        int n = Integer.parseInt(sc.nextLine());
+       // sc.nextLine();  // Consume the newline after the integer input
+
+        // Read the list of integers
+        List<Integer> list = new ArrayList<>();
+        for(int i = 0; i < n; i++){
+            int num = sc.nextInt();
+            list.add(num);
+        }
+        sc.nextLine();
+
+        // Read the number of queries
+        int q = Integer.parseInt(sc.nextLine());
+       
+
+        // Process each query
+        for (int i = 0; i < q; i++) {
+            String query = sc.nextLine();
+            if (query.equals("Insert")) {
+                // Read the Insert query: index and value
+                String[] parts = sc.nextLine().split(" ");
+                int index = Integer.parseInt(parts[0]);
+                int value = Integer.parseInt(parts[1]);
+                
+
+                // Fill the list with dummy values (like 0) if the index is out of bounds
+                while (index > list.size()) {
+                    list.add(0);  // Add 0 to the list to fill in the missing indices
+                }
+
+                // Now insert the value at the correct index
+                list.add(index, value);
+            }  
+            if (query.equals("Delete")) {
+                // Read the Delete query: index
+                int index = Integer.parseInt(sc.nextLine());
+                
+                
+                // Remove the element at the specified index
+                if (index >= 0 && index < list.size()) {
+                    list.remove(index);
+                }
+            }
+        }
+        sc.close();
+        // Print the updated list as space-separated integers
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i));
+            if (i < list.size() - 1) {
+                System.out.print(" ");
+            }
+        }
+        
+    }
+}
